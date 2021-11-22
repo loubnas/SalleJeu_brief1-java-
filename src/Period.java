@@ -1,3 +1,6 @@
+import static Helpers.ConsoleHelper.Print;
+import static Helpers.ConsoleHelper.ReadInt;
+
 public enum Period {
     Min30("30min",5),
     Heure1("1Heure",10),
@@ -22,5 +25,29 @@ public enum Period {
     //getters:
     public String getPeriod() {
         return this.period;
+    }
+
+    public static Period SelectPeriod(){
+        int choix=-1;
+        do {
+            Print("------- Selection de la periode -------");
+            Print("1. 30 Min.");
+            Print("2. 01 Heure.");
+            Print("3. 02 Heures.");
+            Print("4. 05 Heures.");
+            Print("5. Toute la journée.");
+            Print("6. Quitter.");
+            choix=ReadInt("Selectionner une periode : ");
+        }while(choix<1 || choix >6);
+
+        switch (choix){
+            case 1: return Min30;
+            case 2: return Heure1;
+            case 3: return Heure2;
+            case 4: return Heure5;
+            case 5: return Journee;
+        }
+
+        return null;
     }
 }
