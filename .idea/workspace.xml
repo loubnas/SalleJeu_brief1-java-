@@ -2,24 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a9e0283-bcbf-4e37-aefe-e0a4f681fa6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PosteCalendar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/ConsoleBackground.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/ConsoleForeground.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/brief1/Helpers/ConsoleHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Helpers/ConsoleHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Jeu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Jeu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/brief1/Joueur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Joueur.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/brief1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/brief1/Period.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Period.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/brief1/Poste.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Poste.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Reservation$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Reservation$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Reservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Reservation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/brief1/SalleJeux$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/SalleJeux$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/SalleJeux$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/SalleJeux$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/SalleJeux$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/SalleJeux$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/brief1/SalleJeux.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/SalleJeux.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Helpers/ConsoleHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/ConsoleHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Period.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Period.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Poste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Poste.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SalleJeux.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SalleJeux.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +29,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -57,10 +57,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testerjava" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">

@@ -1,3 +1,5 @@
+import Helpers.ConsoleForeground;
+
 import static Helpers.ConsoleHelper.Print;
 import static Helpers.ConsoleHelper.ReadInt;
 
@@ -30,7 +32,8 @@ public enum Period {
     public static Period SelectPeriod(){
         int choix=-1;
         do {
-            Print("\n------- Selection de la periode -------");
+            Print("");
+            Print("------- Selection de la periode -------",ConsoleForeground.PURPLE);
             Print("1. 30 Min.");
             Print("2. 01 Heure.");
             Print("3. 02 Heures.");
@@ -46,6 +49,8 @@ public enum Period {
             case 3: return Heure2;
             case 4: return Heure5;
             case 5: return Journee;
+            case 6: break;
+            default:Print("Choix invalide.", ConsoleForeground.RED);break;
         }
 
         return null;

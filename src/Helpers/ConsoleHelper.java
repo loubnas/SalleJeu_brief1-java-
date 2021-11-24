@@ -7,11 +7,45 @@ public class ConsoleHelper {
 
         System.out.println(Message);
     }
+    public static void Print(String Message,ConsoleForeground ForeColor,ConsoleBackground BackgroundColor){
+        System.out.print(ForeColor.getValue());
+        System.out.print(BackgroundColor.getValue());
+
+        System.out.println(Message);
+
+        System.out.print(ConsoleForeground.RESET.getValue());
+        System.out.print(ConsoleBackground.RESET.getValue());
+    }
+    public static void Print(String Message,ConsoleForeground ForeColor){
+        System.out.print(ForeColor.getValue());
+
+        System.out.println(Message);
+
+        System.out.print(ConsoleForeground.RESET.getValue());
+
+    }
+    public static void Print(String Message,ConsoleBackground BackgroundColor){
+        System.out.print(BackgroundColor.getValue());
+
+        System.out.println(Message);
+
+        System.out.print(ConsoleForeground.RESET.getValue());
+    }
 
     public static int ReadInt(String Message){
-        System.out.print(Message);
-        Scanner scanner=new Scanner(System.in);
-        return scanner.nextInt();
+        boolean erreur=false;
+        do {
+            erreur=false;
+            try {
+                System.out.print(Message);
+                Scanner scanner = new Scanner(System.in);
+                return scanner.nextInt();
+            } catch (Exception ex) {
+                Print("Valeur entrée non valide.",ConsoleForeground.RED);
+                erreur=true;
+            }
+        }while (erreur);
+        return -1;
     }
     public static String ReadString(String Message){
         System.out.print(Message);

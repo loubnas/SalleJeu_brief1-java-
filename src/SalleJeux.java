@@ -1,3 +1,6 @@
+import Helpers.ConsoleBackground;
+import Helpers.ConsoleForeground;
+
 import java.util.*;
 
 import static Helpers.ConsoleHelper.Print;
@@ -59,7 +62,8 @@ public class SalleJeux {
         int choix=-1;
         do {
 
-            Print("\n------- Selection de jeu -------");
+            Print("");
+            Print("------- Selection de jeu -------", ConsoleForeground.PURPLE);
 
             for(int i=0;i<listeJeux.size();i++){
                 Print((i+1)+". "+listeJeux.get(i).getNomJeu()+".");
@@ -67,6 +71,10 @@ public class SalleJeux {
 
             Print((listeJeux.size()+1)+". Quitter.");
             choix=ReadInt("Selectionner une periode : ");
+            if(choix<1 || choix >(listeJeux.size()+1)){
+
+                Print("Choix invalide.", ConsoleForeground.RED);
+            }
 
         }while(choix<1 || choix >(listeJeux.size()+1));
 
@@ -89,20 +97,20 @@ public class SalleJeux {
     public void AjouterReservation(){
         Joueur joueur=SelectJoueur();
         if(joueur==null){
-            Print("Opération annuler.");
+            Print("Opération annuler.",ConsoleBackground.RED);
             return;
         }
 
         Jeu jeu= SelectJeu();
         if(jeu==null){
-            Print("Opération annuler.");
+            Print("Opération annuler.",ConsoleBackground.RED);
             return;
         }
 
         Period period=SelectPeriod();
 
         if(period==null){
-            Print("Opération annuler.");
+            Print("Opération annuler.",ConsoleBackground.RED);
             return;
         }
 
@@ -111,9 +119,9 @@ public class SalleJeux {
 
         switch (etatReservation){
             case ANNULER:
-                Print("============================================");
-                Print("| Reservation impossible pour aujourd'hui. |");
-                Print("============================================");
+                Print("============================================",ConsoleForeground.RED, ConsoleBackground.BLACK);
+                Print("| Reservation impossible pour aujourd'hui. |",ConsoleForeground.RED, ConsoleBackground.BLACK);
+                Print("============================================",ConsoleForeground.RED, ConsoleBackground.BLACK);
                 break;
             case EN_ATTENTE:
                 Poste p=reservation.getPoste();
@@ -121,27 +129,27 @@ public class SalleJeux {
                     reservations.add(reservation);
                     attente.get(p).add(reservation);
 
-                    Print("===============================================");
-                    Print("|                  EN ATTENTE                 |");
-                    Print("===============================================");
-                    Print( reservation.toString());
+                    Print("===============================================",ConsoleForeground.YELLOW, ConsoleBackground.BLACK);
+                    Print("|                  EN ATTENTE                 |",ConsoleForeground.YELLOW, ConsoleBackground.BLACK);
+                    Print("===============================================",ConsoleForeground.YELLOW, ConsoleBackground.BLACK);
+                    Print( reservation.toString(),ConsoleForeground.YELLOW, ConsoleBackground.BLACK);
 
-                    Print("===============================================");
+                    Print("===============================================",ConsoleForeground.YELLOW, ConsoleBackground.BLACK);
 
                 }else{
-                    Print("Reservation annuler. liste d'attente plein");
+                    Print("Reservation annuler. liste d'attente plein",ConsoleForeground.RED);
                 }
                 break;
 
             case SUR_POSTE:
                 reservations.add(reservation);
                 reservation.getPoste().setEnCours(reservation);
-                Print("===============================================");
-                Print("|                   SUR POSTE                 |");
-                Print("===============================================");
-                Print( reservation.toString());
+                Print("===============================================",ConsoleForeground.GREEN, ConsoleBackground.BLACK);
+                Print("|                   SUR POSTE                 |",ConsoleForeground.GREEN, ConsoleBackground.BLACK);
+                Print("===============================================",ConsoleForeground.GREEN, ConsoleBackground.BLACK);
+                Print( reservation.toString(),ConsoleForeground.GREEN, ConsoleBackground.BLACK);
 
-                Print("===============================================");
+                Print("===============================================",ConsoleForeground.GREEN, ConsoleBackground.BLACK);
                 break;
         }
 
@@ -240,6 +248,11 @@ if(Calendar.getInstance().compareTo(limitDate)<0) {
         for(int i=0;i<postes.size();i++){
             if(postes.get(i).ControlePeriodique()){
                 //prendre une reservation de la liste d'attente et la mettre encours sur le poste et la supprimer de la liste
+                if(attente.get(postes.get(i)).size()>0){
+                    Reservation r=attente.get(postes.get(i)).get(0);
+                    attente.get(postes.get(i)).remove(0);
+                    postes.get(i).setEnCours(r);
+                }
             }
         }
     }
@@ -263,7 +276,7 @@ if(Calendar.getInstance().compareTo(limitDate)<0) {
             Somme+=reservations.get(i).getPeriod().getPrix();
         }
         }
-        Print("Le montant total du jour ("+jour+"/"+mois+"/"+annee+") est : "+Somme+" DH.");
+        Print("Le montant total du jour ("+jour+"/"+mois+"/"+annee+") est : "+Somme+" DH.",ConsoleForeground.GREEN);
         return Somme;
     }
 
@@ -287,7 +300,7 @@ if(Calendar.getInstance().compareTo(limitDate)<0) {
                 Somme+=reservations.get(i).getPeriod().getPrix();}
         }
 
-        Print("Le montant total du mois ("+mois+"/"+annee+") est : "+Somme+" DH.");
+        Print("Le montant total du mois ("+mois+"/"+annee+") est : "+Somme+" DH.",ConsoleForeground.GREEN);
         return Somme;
     }
 

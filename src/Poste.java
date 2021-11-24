@@ -1,8 +1,10 @@
 import java.util.Calendar;
 import java.util.List;
 
+import static Helpers.ConsoleHelper.Print;
 
-  public class Poste {
+
+public class Poste {
       static int IDPOSTES=1;
       int id;
       private ConsoleJeu console;
@@ -63,8 +65,13 @@ public void Libirer(){ // setter de l'attribut EnCours (NULL)
     this.Etteindre();
 }
   public void Allumer(){  // message d'affichage
+        this.allumer=true;
+      //Print("===============================================");
+      //Print("|           AFFECTATION SUR POSTE             |");
+      //Print("===============================================");
+      //Print( this.enCours.toString());
 
-      this.allumer=true;
+      //Print("===============================================");
 }
 public void Etteindre(){ // message d'affichage
 

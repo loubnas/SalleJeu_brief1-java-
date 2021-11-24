@@ -1,3 +1,6 @@
+
+import Helpers.ConsoleForeground;
+
 import java.util.Timer;
 import static Helpers.ConsoleHelper.*;
 public class Main {
@@ -11,7 +14,7 @@ public class Main {
         //boucle global et menu principal (ajouter resevation , calcul des gains journalier et monsuelle , quitter)
         int choix=-1;
         do{
-            Print("----------- Menu Principale -----------");
+            Print("----------- Menu Principale -----------", ConsoleForeground.PURPLE);
             Print("1: Ajouter une Reservation.");
             Print("2: Statistiques");
             Print("3: Quitter.");
@@ -22,7 +25,8 @@ public class Main {
                 case 2:
                     int choixStatistiques=-1;
                     do {
-                        Print("\n--------- Choix des statistiques ---------");
+                        Print("");
+                        Print("--------- Choix des statistiques ---------", ConsoleForeground.PURPLE);
                         Print("1. Journaliere");
                         Print("2. Mensuelle");
                         Print("3. Quitter");

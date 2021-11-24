@@ -1,3 +1,5 @@
+import Helpers.ConsoleForeground;
+
 import static Helpers.ConsoleHelper.*;
 
 public class Joueur {
@@ -13,13 +15,21 @@ public class Joueur {
     }
 
     public static Joueur NouveauJoueur(){
-        Print("\n------- Information du joueur -------");
-        String nomComplet=ReadString("Donner le nom complet du joueur : ");
-        if(nomComplet!="") {
+        Print("");
+        Print("------- Information du joueur -------", ConsoleForeground.PURPLE);
+        do{
+
+            String nomComplet=ReadString("Donner le nom complet du joueur : ");
+        if(nomComplet.trim().length()>=3 && nomComplet.trim().length()<=10) {
             return new Joueur(nomComplet);
         }else{
-            return null;
+            Print("Le nom de joueur ne respect pas les regles.", ConsoleForeground.RED);
         }
+            //return null;
+        }
+        while(true);
+
+
     }
 
     @Override
