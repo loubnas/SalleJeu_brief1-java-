@@ -30,7 +30,7 @@ public enum Period {
     public static Period SelectPeriod(){
         int choix=-1;
         do {
-            Print("------- Selection de la periode -------");
+            Print("\n------- Selection de la periode -------");
             Print("1. 30 Min.");
             Print("2. 01 Heure.");
             Print("3. 02 Heures.");

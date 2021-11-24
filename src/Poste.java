@@ -44,7 +44,7 @@ import java.util.List;
 
 // Controller la periode de fin d'utilisation de poste :
 
-   public void ControlePeriodique(){
+   public boolean ControlePeriodique(){
       if(this.EstReserver()){
           Calendar Maintenant=Calendar.getInstance(); // get la date et heure actuelle
 
@@ -52,8 +52,10 @@ import java.util.List;
           if(Maintenant.get(Calendar.HOUR_OF_DAY)>= this.enCours.getFinUtilisation().get(Calendar.HOUR_OF_DAY) &&
           Maintenant.get(Calendar.MINUTE)>=this.enCours.getFinUtilisation().get(Calendar.MINUTE)){
               this.Libirer();
+              return true;
           }
       }
+      return false;
 }
 
 public void Libirer(){ // setter de l'attribut EnCours (NULL)

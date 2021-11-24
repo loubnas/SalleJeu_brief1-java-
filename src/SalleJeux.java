@@ -2,15 +2,20 @@ import java.util.*;
 
 import static Helpers.ConsoleHelper.Print;
 import static Helpers.ConsoleHelper.ReadInt;
+import static Helpers.ConsoleHelper.ReadString;
+
+import java.util.Calendar;
 
 public class SalleJeux {
+
     private List<Poste> postes=new ArrayList<Poste>(); // les poste de la salle des jeux
     private List<Reservation> reservations=new ArrayList<Reservation>(); // liste global des reservations
-    private List<Reservation> listeAttente=new ArrayList<Reservation>(); // la liste d'attente
-    private List<Jeu> listeJeux=new ArrayList<Jeu>(); // la liste des jeux de la salle
+    private List<Jeu> listeJeux=new ArrayList<Jeu>(); // la liste des jeux
+            // Map< key , value>> t = new HashMap()
+    private Map<Poste,List<Reservation>> attente=new HashMap<>();
 
     //constructeur :
-    
+
     public SalleJeux() {
 
         // Initialisation Jeux
@@ -23,20 +28,30 @@ public class SalleJeux {
         Jeu ac = new Jeu(CategorieJeu.Guerre, "ASSASIN'S CREED");
         listeJeux.add(ac);
 
-        //List<Jeu> p1list=new ArrayList<>();
-        //p1list.add(fifa);
-        //p1list.add(pes);
-        //Poste p1=new Poste(ConsoleJeu.XBox,Ecran.DELL,p1list);
-        //postes.add(p1);
 
-
-        postes.add(new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList(fifa, pes)));
-        postes.add(new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList( pes, cs)));
-        postes.add(new Poste(ConsoleJeu.XBox, Ecran.HP, Arrays.asList( pes, cs, ac)));
-        postes.add(new Poste(ConsoleJeu.PlayStation5, Ecran.ASUS, Arrays.asList(pes, ac)));
-        postes.add(new Poste(ConsoleJeu.PlayStation5, Ecran.ASUS, Arrays.asList(pes, cs, ac)));
-        postes.add(new Poste(ConsoleJeu.NintendoSwitch, Ecran.ASUS, Arrays.asList( pes, cs)));
-        postes.add(new Poste(ConsoleJeu.NintendoSwitch, Ecran.SAMSUNG, Arrays.asList(fifa, ac, pes)));
+        // Initialisation des postes :
+        Poste p1=new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList(fifa, pes));
+        postes.add(p1);
+                //put(key,value)
+        attente.put(p1,new ArrayList<Reservation>());
+        Poste p2=new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList(ac, pes));
+        postes.add(p2);
+        attente.put(p2,new ArrayList<Reservation>());
+        Poste p3=new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList( ac));
+        postes.add(p3);
+        attente.put(p3,new ArrayList<Reservation>());
+        Poste p4=new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList(ac, cs));
+        postes.add(p4);
+        attente.put(p4,new ArrayList<Reservation>());
+        Poste p5=new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList(cs, pes));
+        postes.add(p5);
+        attente.put(p5,new ArrayList<Reservation>());
+        Poste p6=new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList(cs,ac, pes));
+        postes.add(p6);
+        attente.put(p6,new ArrayList<Reservation>());
+        Poste p7=new Poste(ConsoleJeu.XBox, Ecran.DELL, Arrays.asList( pes,fifa));
+        postes.add(p7);
+        attente.put(p7,new ArrayList<Reservation>());
     }
 
     public Jeu SelectJeu(){
@@ -44,24 +59,21 @@ public class SalleJeux {
         int choix=-1;
         do {
 
-            Print("------- Selection de jeu -------");
+            Print("\n------- Selection de jeu -------");
 
-            // boucle liste des jeux :
             for(int i=0;i<listeJeux.size();i++){
                 Print((i+1)+". "+listeJeux.get(i).getNomJeu()+".");
             }
 
             Print((listeJeux.size()+1)+". Quitter.");
-
-            choix=ReadInt("Selectionner un jeu de la liste  : ");
+            choix=ReadInt("Selectionner une periode : ");
 
         }while(choix<1 || choix >(listeJeux.size()+1));
 
-        // cas ou il a choisit un jeu :
         if(choix<=listeJeux.size()){
             return listeJeux.get(choix-1);
         }
-        return null; //quitter
+        return null;
     }
 
     public Period SelectPeriod(){
@@ -77,20 +89,20 @@ public class SalleJeux {
     public void AjouterReservation(){
         Joueur joueur=SelectJoueur();
         if(joueur==null){
-            Print("Opération annuler."); // le cas ou le nom de joueur est vide
+            Print("Opération annuler.");
             return;
         }
 
         Jeu jeu= SelectJeu();
         if(jeu==null){
-            Print("Opération annuler."); // le cas ou il a choisit quitter
+            Print("Opération annuler.");
             return;
         }
 
         Period period=SelectPeriod();
 
         if(period==null){
-            Print("Opération annuler."); // le cas ou il a choisit quitter
+            Print("Opération annuler.");
             return;
         }
 
@@ -99,27 +111,43 @@ public class SalleJeux {
 
         switch (etatReservation){
             case ANNULER:
-                Print("Reservation impossible pour aujourd'hui.");
+                Print("============================================");
+                Print("| Reservation impossible pour aujourd'hui. |");
+                Print("============================================");
                 break;
-
             case EN_ATTENTE:
-                if(listeAttente.size()<10) {
-                    listeAttente.add(reservation);
-                    Print(" -- ATTENTE" + reservation.toString());
+                Poste p=reservation.getPoste();
+                if(attente.get(p).size()<10) {  //get(p) = poste -----> return valeur = liste des reservations de ce poste
+                    reservations.add(reservation);
+                    attente.get(p).add(reservation);
+
+                    Print("===============================================");
+                    Print("|                  EN ATTENTE                 |");
+                    Print("===============================================");
+                    Print( reservation.toString());
+
+                    Print("===============================================");
+
                 }else{
                     Print("Reservation annuler. liste d'attente plein");
                 }
                 break;
 
             case SUR_POSTE:
-                Poste p=reservation.getPoste();
-                p.setEnCours(reservation);
-                Print(" -- SUR_POSTE "+reservation.toString());
+                reservations.add(reservation);
+                reservation.getPoste().setEnCours(reservation);
+                Print("===============================================");
+                Print("|                   SUR POSTE                 |");
+                Print("===============================================");
+                Print( reservation.toString());
+
+                Print("===============================================");
                 break;
         }
-        // verification d'etat de resevation et asigner la la reservation sur poste ou a la liste d'attente selon le cas
 
     }
+
+    // verification de la reservation -----------------------
     public EtatReservation VerifierReservation(Reservation reservation){
 
         //Retourn l'etat de la reservation et assign le poste en cas de non annulation
@@ -130,26 +158,68 @@ public class SalleJeux {
 
         List<Poste> postesJeu=this.GetPosteJeu(reservation.getJeu());
         Calendar MinDate;
+if(Calendar.getInstance().compareTo(limitDate)<0) {
+    // Cas Poste Libre :
 
-        // Cas Poste Libre :
-
-        for(int i=0;i<postesJeu.size();i++){
-            if(!postesJeu.get(i).EstReserver()) { // poste disponible
-                reservation.setPoste(postesJeu.get(i));
-                reservation.setDebutUtilisation(reservation.getDateReservation());
-                if(reservation.getFinUtilisation().compareTo(limitDate)<=0 ) {
-                    return EtatReservation.SUR_POSTE;
-                }
-                else {
-                    reservation.ReinitPosteEtDateDebut(); //
-                }
+    for (int i = 0; i < postesJeu.size(); i++) {
+        if (!postesJeu.get(i).EstReserver()) {
+            reservation.setPoste(postesJeu.get(i));
+            reservation.setDebutUtilisation(reservation.getDateReservation());
+            if (reservation.getFinUtilisation().compareTo(limitDate) <= 0) {
+                return EtatReservation.SUR_POSTE;
+            } else {
+                return EtatReservation.ANNULER;
             }
         }
-
-        return EtatReservation.ANNULER;
-
     }
 
+//------------------- MAX -----------------------------------------------------------------
+    List<PosteCalendar> MaxDates = new ArrayList<>(); // liste pour stocker l max date par poste
+
+    for (int i = 0; i < postesJeu.size(); i++) {             // key : get(postesJey.get(i)
+        List<Reservation> reservationsPoste = attente.get(postesJeu.get(i)); // return liste reservation par rapport au poste
+
+
+        Optional<Reservation> MaxPosteReservation = reservationsPoste.stream().max(new Comparator<Reservation>() {
+            @Override
+            public int compare(Reservation o1, Reservation o2) {
+                return o1.getFinUtilisation().compareTo(o2.getFinUtilisation());
+            }
+        });
+
+        if (MaxPosteReservation.isPresent()) { // si le max existe(des personnes existent dans la liste
+            //d'attente de ce poste
+
+
+            MaxDates.add(new PosteCalendar(postesJeu.get(i), MaxPosteReservation.get().getFinUtilisation()));
+        } else  // pas de personne dans la liste d'attence
+        {
+            MaxDates.add(new PosteCalendar(postesJeu.get(i), postesJeu.get(i).getEnCours().getFinUtilisation()));
+        }
+    }
+
+//---------------------------MIN -------------------------------------------------------------
+
+    Optional<PosteCalendar> selectedPoste = MaxDates.stream().min(new Comparator<PosteCalendar>() {
+        @Override
+        public int compare(PosteCalendar o1, PosteCalendar o2) {
+
+            return o1.getDate().compareTo(o2.getDate()); //return Date MIN
+        }
+    });
+
+    if (selectedPoste.isPresent()) {
+        reservation.setPoste(selectedPoste.get().getPoste());
+        reservation.setDebutUtilisation(selectedPoste.get().getDate()); // date debut d'utilisation
+        if (reservation.getFinUtilisation().compareTo(limitDate) <= 0) {  // cas ou la periode chosisit < = 20h
+            return EtatReservation.EN_ATTENTE;
+        }
+    }
+}
+
+        return EtatReservation.ANNULER;
+    }
+    //-----------------------------------------------------------------------------------------
 
     public List<Poste> GetPosteJeu(Jeu jeu){
         List<Poste> postesJeu=new ArrayList<Poste>();
@@ -163,28 +233,64 @@ public class SalleJeux {
     }
 
 
+
     public void ControlePeriodique(){
         //appel de function controlePeriodique des postes et assign un joueur de la liste d'attente dans le cas
         // de liberation de poste
         for(int i=0;i<postes.size();i++){
-            postes.get(i).ControlePeriodique();
+            if(postes.get(i).ControlePeriodique()){
+                //prendre une reservation de la liste d'attente et la mettre encours sur le poste et la supprimer de la liste
+            }
         }
     }
 
-    public float  CalculGainJournalier(int jour,int mois,int année){
-        return 0.0f;
-    }
-    public float  CalculGainJournalierActuell(){
-        return 0.0f;
+    public float  CalculGainJournalier(){
+        int jour;
+        int mois;
+        int annee;
+
+        Print("\n--------- Calcule journalier ------------------- : ");
+        jour=ReadInt("Entrez un jour : ");
+        mois=ReadInt("Entrez un mois : ");
+        annee=ReadInt("Entrez une année : ");
+
+        float Somme=0;
+
+        for (int i=0; i<reservations.size();i++ ) {
+          Calendar date=reservations.get(i).getDateReservation();
+        if(date.get(Calendar.DAY_OF_MONTH)==jour && date.get(Calendar.MONTH)+1==mois && date.get(Calendar.YEAR)==annee){
+
+            Somme+=reservations.get(i).getPeriod().getPrix();
+        }
+        }
+        Print("Le montant total du jour ("+jour+"/"+mois+"/"+annee+") est : "+Somme+" DH.");
+        return Somme;
     }
 
 
-    public float  CalculGainMonsuelle(int mois,int année){
-    return 0.0f;
+
+    public float  CalculGainMonsuelle(){
+
+        int mois;
+        int annee;
+
+        Print("\n--------- Calcule Mensuelle ------------------- : ");
+
+        mois=ReadInt("Entrez un mois : ");
+        annee=ReadInt("Entrez une année : ");
+
+        float Somme=0;
+
+        for (int i=0; i<reservations.size();i++ ) {
+            Calendar date=reservations.get(i).getDateReservation();
+            if (date.get(Calendar.MONTH)+1==mois && date.get(Calendar.YEAR)==annee){
+                Somme+=reservations.get(i).getPeriod().getPrix();}
+        }
+
+        Print("Le montant total du mois ("+mois+"/"+annee+") est : "+Somme+" DH.");
+        return Somme;
     }
 
-    public float  CalculGainMonsuelleAcuell(){
-        return 0.0f;
-    }
+
 
 }

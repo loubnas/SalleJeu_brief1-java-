@@ -1,6 +1,6 @@
 import java.util.Calendar;
 
-
+import static Helpers.ConsoleHelper.padRight;
 
 public class Reservation  {
     private Joueur joueur;
@@ -114,22 +114,17 @@ public class Reservation  {
     }
 
 
-    public void ReinitPosteEtDateDebut() {
-        this.poste=null;
-        this.debutUtilisation=null;
-        this.finUtilisation=null;
-    }
+
 
     @Override
     public String toString() {
-        return "Reservation{" +
-                "joueur=" + joueur +
-                ", period=" + period +
-                ", jeu=" + jeu +
-                ", dateRservation=" + dateRservation.getTime() +
-                ", debutUtilisation=" + debutUtilisation.getTime() +
-                ", finUtilisation=" + finUtilisation.getTime() +
-                ", poste=" + poste +
-                '}';
+        return
+                "| "+padRight("joueur      = " + joueur,43) +" |\n"+
+                        "| "+padRight("period      = " + period ,43) +" |\n"+
+                        "| "+padRight("jeu         = " + jeu.getNomJeu(),43) +" |\n"+
+                        "| "+padRight("Reservation = " + dateRservation.getTime() ,43) +" |\n"+
+                        "| "+padRight("Debut       = " + debutUtilisation.getTime(),43) +" |\n"+
+                        "| "+padRight("Fin         = " + finUtilisation.getTime(),43) +" |\n"+
+                        "| "+padRight("Poste       = " + poste,43) +" |" ;
     }
 }

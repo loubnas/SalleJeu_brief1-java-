@@ -13,7 +13,7 @@ public class Joueur {
     }
 
     public static Joueur NouveauJoueur(){
-        Print("------- Information du joueur -------");
+        Print("\n------- Information du joueur -------");
         String nomComplet=ReadString("Donner le nom complet du joueur : ");
         if(nomComplet!="") {
             return new Joueur(nomComplet);
@@ -22,4 +22,8 @@ public class Joueur {
         }
     }
 
+    @Override
+    public String toString() {
+        return "CODE-"+ID;
+    }
 }

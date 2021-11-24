@@ -20,6 +20,19 @@ public class Main {
                 case 1: salleJeux.AjouterReservation();
                 break;
                 case 2:
+                    int choixStatistiques=-1;
+                    do {
+                        Print("\n--------- Choix des statistiques ---------");
+                        Print("1. Journaliere");
+                        Print("2. Mensuelle");
+                        Print("3. Quitter");
+                        choixStatistiques=ReadInt("Veuillez choisir le type des statistiques : ");
+                        switch (choixStatistiques){
+                            case 1: salleJeux.CalculGainJournalier();break;
+                            case 2: salleJeux.CalculGainMonsuelle();break;
+
+                        }
+                    }while(choixStatistiques<0 || choix>3);
                 break;
             }
 

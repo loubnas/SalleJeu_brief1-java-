@@ -2,25 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a9e0283-bcbf-4e37-aefe-e0a4f681fa6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/ConsoleHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/VerificationTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/CategorieJeu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/ConsoleJeu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Ecran.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Jeu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Joueur.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Period.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Poste.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/Reservation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/brief1/SalleJeux.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CategorieJeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CategorieJeu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConsoleJeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleJeu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ecran.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ecran.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EtatReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EtatReservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jeu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PosteCalendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/Helpers/ConsoleHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Helpers/ConsoleHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/Jeu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Jeu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/Joueur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Joueur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/Period.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Period.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/Poste.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Poste.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/Reservation$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Reservation$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/Reservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/Reservation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/SalleJeux$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/SalleJeux$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/brief1/SalleJeux.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/brief1/SalleJeux.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helpers/ConsoleHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/ConsoleHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Period.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Period.java" afterDir="false" />
@@ -63,7 +57,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testerjava" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />

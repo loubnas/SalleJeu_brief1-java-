@@ -19,4 +19,30 @@ public class ConsoleHelper {
         return scanner.nextLine();
     }
 
+
+    public static String padLeft(String inputString, int length) {
+        if (inputString.length() >= length) {
+            return inputString;
+        }
+        StringBuilder sb = new StringBuilder();
+        while (sb.length() < length - inputString.length()) {
+            sb.append(' ');
+        }
+        sb.append(inputString);
+
+        return sb.toString();
+    }
+    public static String padRight(String inputString, int length) {
+        if (inputString.length() >= length) {
+            return inputString;
+        }
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(inputString);
+        while (sb.length() < length ) {
+            sb.append(' ');
+        }
+
+        return sb.toString();
+    }
 }
